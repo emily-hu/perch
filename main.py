@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, session, url_for, request, escape
+from routing import orgs, users, topics, candidates
 
 app = Flask(__name__)
 
@@ -24,5 +25,17 @@ def signup():
 def logout():
     session.pop('username', None)
     return redirect('/')
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return 'This page does not exist', 404
+
+@app.errorhandler(403)
+def forbidden(error):
+    return 'This content is forbidden', 403
+
+@app.errorhandler(400)
+def bad_request(error):
+    return 'Bad request', 400
 
 app.secret_key = 'jdkaslti543y8uarief'
