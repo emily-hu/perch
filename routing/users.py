@@ -11,7 +11,7 @@ def create_user(): # name, email, password
 
 @app.route('/users/<user_id>/name/', methods=['GET'])
 def get_user_name(user_id):
-    name = users.get_name(user_id)
+    # name = users.get_name(user_id)
     return user_id
 
 @app.route('/users/<user_id>/orgs/', methods=['GET'])
