@@ -1,20 +1,20 @@
-from flask import Flask, render_template
+from flask import Blueprint
 import sys
 sys.path.append("..")
 from database import users
 
-app = Flask(__name__)
+user_api = Blueprint('user_api', __name__)
 
-@app.route('/users/', methods=['POST'])
+@user_api.route('/users/', methods=['POST'])
 def create_user(): # name, email, password
     pass # return json
 
-@app.route('/users/<user_id>/name/', methods=['GET'])
+@user_api.route('/users/<user_id>/name/', methods=['GET'])
 def get_user_name(user_id):
     # name = users.get_name(user_id)
     return user_id
 
-@app.route('/users/<user_id>/orgs/', methods=['GET'])
+@user_api.route('/users/<user_id>/orgs/', methods=['GET'])
 def get_user_orgs(user_id):
     org_list = users.get_orgs(user_id)
     name = get_name(user_id)
@@ -22,6 +22,6 @@ def get_user_orgs(user_id):
         abort(404)
     return org_list
 
-@app.route('/users/<user_id>/password/', methods=['PUT'])
+@user_api.route('/users/<user_id>/password/', methods=['PUT'])
 def change_password(user_id): # new password
     pass # return success

@@ -3,6 +3,11 @@ from routing import orgs, users, topics, candidates
 
 app = Flask(__name__)
 
+app.register_blueprint(orgs.org_api)
+app.register_blueprint(users.user_api)
+app.register_blueprint(topics.topic_api)
+app.register_blueprint(candidates.candidate_api)
+
 @app.route('/')
 def main():
     # if 'username' in session:
