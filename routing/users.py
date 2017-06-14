@@ -1,5 +1,8 @@
 from flask import Flask, render_template
-        
+import sys
+sys.path.append("..")
+from database import users
+
 app = Flask(__name__)
 
 @app.route('/users/', methods=['POST'])
@@ -8,14 +11,12 @@ def create_user(): # name, email, password
 
 @app.route('/users/<user_id>/name/', methods=['GET'])
 def get_user_name(user_id):
-    name = get_name(user_id)
-    if len(name) == 0:
-        abort(404)
-    return name
+    name = users.get_name(user_id)
+    return user_id
 
 @app.route('/users/<user_id>/orgs/', methods=['GET'])
 def get_user_orgs(user_id):
-    org_list = get_orgs(user_id)
+    org_list = users.get_orgs(user_id)
     name = get_name(user_id)
     if len(name) == 0:
         abort(404)

@@ -1,4 +1,7 @@
 from flask import Flask, render_template
+import sys
+sys.path.append("..")
+from database import orgs
 
 app = Flask(__name__)
 
