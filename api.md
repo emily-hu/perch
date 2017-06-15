@@ -91,10 +91,21 @@ Adds or removes a user from an organization based on action.
  
 **POST** /orgs/[name]/admins/  
 id: str, the uid  
-action: str, "add" or "remove"  
 Status codes: 200 OK, 400 Bad Request, 403 Forbidden, 404 Not Found  
 Returns: None  
-Adds or removes an administrator from the organization based on action.
+Adds an administrator to the organization.
+
+**DELETE** /orgs/[name]/users/  
+id: str, the uid  
+Status codes: 200 OK, 400 Bad Request, 403 Forbidden, 404 Not Found  
+Returns: None  
+Removes a user from the organization.
+
+**DELETE** /orgs/[name]/admins/  
+id: str, the uid  
+Status codes: 200 OK, 400 Bad Request, 403 Forbidden, 404 Not Found  
+Returns: None  
+Removes an administrator from the organization.
  
 **DELETE** /orgs/[name]  
 Status codes: 200 OK, 403 Forbidden, 404 Not Found  
